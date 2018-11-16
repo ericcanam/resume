@@ -9,7 +9,15 @@
 			function initialize(){
 				// document.getElementById("intro").checked = true;
 				document.getElementById("contact_form").reset(); 
+				
+				if(window.location.hash) {
+					if(window.location.hash.substring(1)=="submitted"){
+						document.getElementById("contact").checked = true;
+					}
+				}
 			}
+			
+			
 		</script>
 	</head>
 	<body onload="initialize();">
@@ -177,7 +185,24 @@
 			<div class="page" id="co">
 				
 				<h2>Contact Form</h2>
-				<form id="contact_form" action="https://formspree.io/eric.canam@live.ca" method="POST">
+				
+				<script>
+					if(window.location.hash) {
+						if(window.location.hash.substring(1)=="submitted"){
+							document.write("<div style='border: 2pt solid var(--accent1);background-color: var(--accent3);border-radius: 6pt;padding: 4pt;'>Thanks for taking the time to reach out! I'll get back to you as soon as possible.</div>");
+						}
+					}
+				</script>
+				
+				<form id="contact_form" action="https://www.enformed.io/wsn1mvq8" method="POST">
+				
+					<!-- enformed.io fields -->
+					<script>
+						document.write('<input type="hidden" name="*redirect" value="https://ecanam.me#submitted" />');
+					</script>
+					<input type="hidden" name="*reply" value="email" />
+					<input type="hidden" name="*subject" value="Contact" />
+					
 					<table class="block">
 						<tr>
 							<td>
