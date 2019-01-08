@@ -4,6 +4,7 @@
 		<title>Eric Canam - Online Resume</title>
 		<link type="text/css" rel="stylesheet" href="./fonts.css" />
 		<link type="text/css" rel="stylesheet" href="./styles.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86" />
 		
 		<script>
 			function initialize(){
@@ -16,7 +17,6 @@
 					}
 				}
 			}
-			
 			
 		</script>
 	</head>
@@ -49,11 +49,21 @@
 				</table>
 			</div>
 			
-			<label for="intro" class="menu"><div id="inb">INTRO</div></label></label><!--
-			--><label for="resume" class="menu"><div id="reb">R&#201;SUM&#201;</div></label><!--
-			--><label for="projects" class="menu"><div id="prb">PROJECTS</div></label><!--
-			--><label for="contact" class="menu"><div id="cob">CONTACT</div></label>
+			<div class="nav-wrapper">
+				<div class="menu-scroll-fade"></div>
+				<div class="menu-scroll-fade"></div>
+				<div class="nav">
+					<div class="menu-filler"></div><!--
+					--><label for="intro" class="menu"><div id="inb">INTRO</div></label></label><!--
+					--><label for="resume" class="menu"><div id="reb">R&#201;SUM&#201;</div></label><!--
+					--><label for="projects" class="menu"><div id="prb">PROJECTS</div></label><!--
+					--><label for="contact" class="menu"><div id="cob">CONTACT</div></label><!--
+					--><div class="menu-filler"></div>
+				</div>
+			</div>
 			
+			
+			<!-- INTRO -->
 			<div class="page" id="in">
 				<h2>About Me</h2>
 				<p>
@@ -70,118 +80,155 @@
 				</p>
 			</div>
 			
+			<!-- RESUME -->
 			<div class="page" id="re">
 				<p>Want a PDF copy of my r&#233;sum&#233;? You can <a href="./Eric Canam.pdf">download it</a> here!</p>
 				
 				<h2>Work Experience</h2>
-				<table class="block">
-					<tr>
-						<td><span class="accent1">National Defence</span><br />Software Developer</td>
-						<td><span class="accent1">Ericsson Canada</span><br />Software Developer</td>
-					</tr>
-					<tr>
-						<td><span class="accent2">May 2017 &mdash; present</span></td>
-						<td><span class="accent2">Sep 2014 &mdash; Jan 2015 (high school co-op)<br />
-						Jul 2015 &mdash; Sep 2015</span></td>
-					</tr>
-					<tr>
-						<td>
-							<p>Reverse-engineered an older Windows application in Java, currently maintaining it.</p>
-							<p>Wrote technical documentation to support future development of my Java application, as well as user documentation to facilitate deployment and adoption.</p>
-							<p>Wrote PowerShell scripts to help manage internal network of servers.</p>
-						</td>
-						<td>
-							<p>Managed production Windows Servers, including their running scripts and programs.</p>
-							<p>Maintained programs written in Java, C#, and web-based programs written in Python, Adobe ColdFusion, Perl and PHP.</p>
-							<p>Developed user-friendly checkout tool for use by employees while library was unstaffed.</p>
-						</td>
-					</tr>
-				</table>
+				<div class="block">
+					<div><span class="accent1">National Defence</span><br />Software Developer</div>
+					<div><span class="accent2">May 2017 &mdash; present</span></div>
+					<div>
+						<p>Reverse-engineered an older Windows application in Java, currently maintaining it.</p>
+						<p>Wrote technical documentation to support future development of my Java application, as well as user documentation to facilitate deployment and adoption.</p>
+						<p>Wrote PowerShell scripts to help manage internal network of servers.</p>
+					</div>
+				</div>
+				<div class="block">
+					<div><span class="accent1">Ericsson Canada</span><br />Software Developer</div>
+					<div><span class="accent2">Sep 2014 &mdash; Jan 2015 (high school co-op)<br />
+					Jul 2015 &mdash; Sep 2015</span></div>
+					<div>
+						<p>Managed production Windows Servers, including their running scripts and programs.</p>
+						<p>Maintained programs written in Java, C#, and web-based programs written in Python, Adobe ColdFusion, Perl and PHP.</p>
+						<p>Developed user-friendly checkout tool for use by employees while library was unstaffed.</p>
+					</div>
+				</div>
 				
 				
 				<h2>Skills</h2>
-				<table class="block">
-					<tr>
-						<td><span class="accent1">Programming</span></td>
-						<td><span class="accent1">General Skills</span></td>
-					</tr>
-					<tr>
-						<td>
-							<p>Very well-versed in Java</p>
-							<p>Batch, Windows PowerShell</p>
-							<p>SQL/MySQL</p>
-							<p>HTML5/CSS3/JavaScript, PHP/Perl/Python</p>
-							<p>Some familiarity with C</p>
-						</td>
-						<td rowspan="3">
-							<p>Able to efficiently solve problems with available resources and technologies, and develop creative solutions.</p>
-							<p>Extensive knowledge in use of common productivity solutions, such as Microsoft Word, Excel, and Outlook.</p>
-							<p>A self-starter who can work independently as well as contributing to team environments.</p>
-							<p>Familiar with common version control systems, and project management applications.</p>
-						</td>
-					</tr>
-					<tr>
-						<td><span class="accent1">Applications and Systems</span></td>
-					</tr>
-					<tr>
-						<td>
-							<p>Experience with Apache Web Server, Windows IIS</p>
-							<p>Familiar withWindows Server 2003, 2008, and 2012</p>
-						</td>
-					</tr>
-				</table>
+				<div class="block">
+					<div><span class="accent1">Programming</span></div>
+					<div>
+						<p>Very well-versed in Java</p>
+						<p>Batch, Windows PowerShell</p>
+						<p>SQL/MySQL</p>
+						<p>HTML5/CSS3/JavaScript, PHP/Perl/Python</p>
+						<p>Some familiarity with C</p>
+					</div>
+					<div><span class="accent1">Applications and Systems</span></div>
+					<div>
+						<p>Experience with Apache Web Server, Windows IIS</p>
+						<p>Familiar with Windows Server 2003, 2008, and 2012</p>
+					</div>
+				</div>
+				<div class="block">
+					<div><span class="accent1">General Skills</span></div>
+					<div>
+						<p>Able to efficiently solve problems with available resources and technologies, and develop creative solutions.</p>
+						<p>Extensive knowledge in use of common productivity solutions, such as Microsoft Word, Excel, and Outlook.</p>
+						<p>A self-starter who can work independently as well as contributing to team environments.</p>
+						<p>Familiar with common version control systems, and project management applications.</p>
+					</div>
+				</div>
 				
 				
 				<h2>Volunteer Experience</h2>
-				<table class="block">
-					<tr>
-						<td><span class="accent1">Ravens Racing</span><br />Team Media Lead</td>
-						<td><span class="accent1">Bytown Ski Club</span><br />Assistant Web Admin</td>
-					</tr>
-					<tr>
-						<td><span class="accent2">Sep 2017 &mdash; present</span></td>
-						<td><span class="accent2">Sep 2014 &mdash; Mar 2015</span></td>
-					</tr>
-					<tr>
-						<td>
-							<p>Designed, built, and deployed, currently maintain team website. Maintain and create content for official team social media sites.</p>
-							<p>Help with hands-on car manufacturing and maintenance.</p>
-						</td>
-						<td>
-							<p>Kept website information current, implemented some design changes.</p>
-							<p>Maintained PHP/Perl/Python scripts that interacted with MySQL databases.</p>
-						</td>
-					</tr>
-				</table>
+				<div class="block">
+					<div><span class="accent1">Ravens Racing</span><br />Team Media Lead</div>
+					<div><span class="accent2">Sep 2017 &mdash; present</span></div>
+					<div>
+						<p>Designed, built, and deployed, currently maintain team website. Maintain and create content for official team social media sites.</p>
+						<p>Help with hands-on car manufacturing and maintenance.</p>
+					</div>
+				</div>
+				<div class="block">
+					<div><span class="accent1">Bytown Ski Club</span><br />Assistant Web Admin</div>
+					<div><span class="accent2">Sep 2014 &mdash; Mar 2015</span></div>
+					<div>
+						<p>Kept website information current, implemented some design changes.</p>
+						<p>Maintained PHP/Perl/Python scripts that interacted with MySQL databases.</p>
+					</div>
+				</div>
 				
 				
 				<h2>Education</h2>
-				<table class="block">
-					<tr>
-						<td><span class="accent1">Carleton University</span><br />Software Engineering (B.Eng)</td>
-						<td><span class="accent1">L.D.H.S.S.</span><br />High School Diploma</td>
-					</tr>
-					<tr>
-						<td><span class="accent2">Sep 2016 &mdash; present (3<sup>rd</sup> year)</span></td>
-						<td><span class="accent2">Sep 2010 &mdash; Jun 2016</span></td>
-					</tr>
-					<tr>
-						<td>
-							<p>High performance in programming classes.</p>
-							<p>Media Lead for Formula SAE team, Ravens Racing.</p>
-						</td>
-						<td>
-							<p>High performance in 10<sup>th</sup> to 12<sup>th</sup> grade computer science classes.</p>
-							<p>Electric guitarist in school musical pit band (12<sup>th</sup> grade).</p>
-						</td>
-					</tr>
-				</table>
+				<div class="block">
+					<div><span class="accent1">Carleton University</span><br />Software Engineering (B.Eng)</div>
+					<div><span class="accent2">Sep 2016 &mdash; present (3<sup>rd</sup> year)</span></div>
+					<div>
+						<p>High performance in programming classes.</p>
+						<p>Media Lead for Formula SAE team, Ravens Racing.</p>
+					</div>
+				</div>
+				<div class="block">
+					<div><span class="accent1">L.D.H.S.S.</span><br />High School Diploma</div>
+					<div><span class="accent2">Sep 2010 &mdash; Jun 2016</span></div>
+					<div>
+						<p>High performance in 10<sup>th</sup> to 12<sup>th</sup> grade computer science classes.</p>
+						<p>Electric guitarist in school musical pit band (12<sup>th</sup> grade).</p>
+					</div>
+				</div>
 			</div>
 			
+			<!-- PROJECTS -->
 			<div class="page" id="pr">
+				<p>I've worked on some cool things before, and I'm always taking on new ones.
+				See below for a list of the projects I'm most proud of.</p>
+				
+				<div class="project">
+					<h2>Ravens Racing Website</h2>
+					<p class="date">Summer 2018 &mdash; present</p>
+					<p>When I joined Ravens Racing FSAE at Carleton in 2017, the team's official website was a large Wix site that was hard to navigate, and hard to work on.
+					I made it my goal to make a site that looked better, was more thoughtfully laid out, and that still contained all useful information.</p>
+					<p>I created the site and launched it (<a target="_blank" href="http://ravensracing.com/">ravensracing.com</a>), and currently update it whenever needed.</p>
+					<p>The site features a fade-scrolling effect on the home page, and is mobile-friendly. It was made so that content updates are dynamically
+					applied across the whole site, and most content is pulled from easy-to-modify JSON files. The whole site is written in HTML/JavaScript/CSS, with some
+					content generated through PHP. No third-party libraries are used.</p>
+					<p>The site is a work-in-progress, so I'm currently developing a couple new cool features.</p>
+				</div>
+				
+				<div class="project">
+					<h2>Chipstart</h2>
+					<p class="date">Spring 2016</p>
+					<p>Chipstart is a web app meant to help kids learn to write simple code. It used a simulated on-screen microchip that would "control" LEDs or a
+					7-segment display, and "take input" from toggle switches and/or buttons (all simulated on-screen as well). The idea was that by offering a simple
+					visual medium, controlled by a small number of simple commands and elementary math, coding could be made to seem less daunting and easier to learn.</p>
+					<p>In the spring of 2017, I submitted to the TechU.Me AppJam (an app competition for high school students), and won a cash prize as well as a scholarship
+					to the University of Ottawa!</p>
+					<p>The app worked via a JavaScript interpreter (I was not familiar with cloud computing back then) that parsed and executed a syntax of code developed by myself,
+					but very similar in syntax to Python. The language was fully documented such that if read from the beginning, users could learn to write it with no prior
+					programming experience.</p>
+					<p>The app also featured a small number of "challenges" that the user could complete. The users could write and test their code, and when they were ready, they
+					could have it "evaluated". The app would check that the code did what it was supposed to, and then give feedback based on the results of running it.</p>
+					<p>To date, I am probably most proud of this project. Unfortunately, it isn't live at the moment, but I hope to recreate it with more features (and a more
+					elegant solution than an interpreter written in JavaScript). The code can be found <a href="https://github.com/ericcanam/Chipstart">on a repository</a> on my GitHub.</p>
+				</div>
+				
+				<div class="project">
+					<h2>Wittypedia</h2>
+					<p class="date">Work In Progress (present)</p>
+					<p>Wittypedia will be a phone game similar in style to <i>Cards Against Humanity</i> or <i>Apples to Apples</i>.Players will take turns judging players submissions
+					to fill-in-the-blank prompts. What makes this different is that the fill-in-the-blank prompts will be generated using random sentences from Wikipedia.
+					A random sentence is picked, and a machine learning model will try to determine where best to put the blank.</p>
+				</div>
+				
+				<div class="project">
+					<h2>Turd Sort</h2>
+					<p class="date">Winter 2015</p>
+					<p>Turd Sort was my answer to BOGO sort. It uses the same principle as bogo sort: randomize the list until it just happens to be in the correct order.
+					Turd Sort improves upon bogo sort by shuffling the list until either the min or max winds up at the front or end of the list. When this happens,
+					Turd Sort will keep it there and shuffle the middle of the list, until there are 0 or 1 items left in the middle.</p>
+					<p>On average, Turd Sort was <i>way</i> faster than bogo sort, especially at list sizes above 6. Ultimately, though, Turd Sort is useless as a sorting algorithm.
+					I think its purpose is to serve as a reminder: an algorithm may be able to be improved, but sometimes it's better to write a new one altogether.</p>
+					<p>The Python code can be found <a href="https://github.com/ericcanam/Turd-Sort">on a repository</a> on my GitHub. You can also see graphs of its
+					<a href="./projects/turdsort/f2.png" target="_blank">average runtimes</a> over 5,000 trials, and its average
+					<a href="./projects/turdsort/f1.png" target="_blank">runtimes compared to bogo sort</a>, also over 5,000 trials.</p>
+				</div>
 				
 			</div>
 			
+			<!-- CONTACT -->
 			<div class="page" id="co">
 				
 				<h2>Contact Form</h2>
@@ -206,17 +253,17 @@
 					<table class="block">
 						<tr>
 							<td>
-								<p><label for="name">Full Name</label></p>
+								<p><label for="name">*Full Name</label></p>
 								<input required type="text" name="name" id="name" />
 							</td>
 							<td>
-								<p><label for="email">Email Address</label></p>
+								<p><label for="email">*Email Address</label></p>
 								<input required type="email" name="email" id="email" />
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<p><label for="company">Company/Organization</label></p>
+								<p><label for="company">*Company/Organization</label></p>
 								<input required type="text" name="company" id="company" />
 							</td>
 							<td>
@@ -226,8 +273,8 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<p><label for="message">Message</label></p>
-								<textarea style="height:64pt;" name="message" id="message"></textarea>
+								<p><label for="message">*Message</label></p>
+								<textarea required style="height:64pt;" name="message" id="message"></textarea>
 							</td>
 						</tr>
 						<tr>
