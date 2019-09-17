@@ -43,7 +43,7 @@
 							<div class="media-array">
 								<a target="_blank" href="https://www.linkedin.com/in/ericcanam/"><img src="./img/In-White-128px-R.png" /></a><!--
 								--><a target="_blank" href="https://github.com/ericcanam"><img src="./img/GitHub-Mark-Light-120px-plus.png" /></a><!--
-								--><a href="./Eric Canam.pdf"><img src="./img/PDF_32.png" /></a>
+								--><a target="_blank" href="./Eric Canam.pdf"><img src="./img/PDF_32.png" /></a>
 							</div>
 						</td>
 					</tr>
@@ -58,7 +58,6 @@
 					--><label for="intro" class="menu"><div id="inb">INTRO</div></label></label><!--
 					--><label for="resume" class="menu"><div id="reb">R&#201;SUM&#201;</div></label><!--
 					--><label for="projects" class="menu"><div id="prb">PROJECTS</div></label><!--
-					--><label for="contact" class="menu"><div id="cob">CONTACT</div></label><!--
 					--><div class="menu-filler"></div>
 				</div>
 			</div>
@@ -79,20 +78,26 @@
 					Check out my <label for="resume" class="a">r&#233;sum&#233;</label> and
 					<label for="projects" class="a">projects</label> to see how I've used my love of problem-solving in the real world.
 				</p>
+				<p>
+					To contact me, send me a message on <a target="_blank" href="https://www.linkedin.com/in/ericcanam/">LinkedIn</a>,
+					or download the PDF version of my r&#233;sum&#233;! Included is my email address and phone number.
+				</p>
 			</div>
 			
 			<!-- RESUME -->
 			<div class="page" id="re">
-				<p>Want a PDF copy of my r&#233;sum&#233;? You can <a href="./Eric Canam.pdf">download it</a> here!</p>
+				<p>Want a PDF copy of my r&#233;sum&#233;? You can <a target="_blank" href="./Eric Canam.pdf">download it</a> here!</p>
 				
 				<h2>Work Experience</h2>
 				<div class="block">
 					<div><span class="accent1">National Defence</span><br />Software Developer</div>
 					<div><span class="accent2">May 2017 &mdash; present</span></div>
 					<div>
-						<p>Reverse-engineered an older Windows application in Java, currently maintaining it.</p>
+						<p>Reverse-engineered an old, unsupported Windows application in Java. Wrote technical documentation to support future development, and user documentation to facilitate adoption and use.</p>
 						<p>Wrote technical documentation to support future development of my Java application, as well as user documentation to facilitate deployment and adoption.</p>
 						<p>Wrote PowerShell scripts to help manage internal network of servers.</p>
+						<p>Tested Microsoft Azure cloud environments and verified that procedures related to their development were complete and correct.</p>
+						<p>Modernizing a terminal interface for an IBM mainframe application by porting it to a new Angular web app.</p>
 					</div>
 				</div>
 				<div class="block">
@@ -100,9 +105,10 @@
 					<div><span class="accent2">Sep 2014 &mdash; Jan 2015 (high school co-op)<br />
 					Jul 2015 &mdash; Sep 2015</span></div>
 					<div>
-						<p>Managed production Windows Servers, including their running scripts and programs.</p>
-						<p>Maintained programs written in Java, C#, and web-based programs written in Python, Adobe ColdFusion, Perl and PHP.</p>
-						<p>Developed user-friendly checkout tool for use by employees while library was unstaffed.</p>
+						<p>Managed production Windows servers and their hosted applications.</p>
+						<p>Maintained apps written in Java, C#, and web-based programs written in Python, ColdFusion, Perl and PHP, running on IIS and Apache. These were run on variety of physical servers and VMs (Windows and Linux).</p>
+						<p>Developed user-friendly Java-based book checkout tool for use by employees while campus library was unstaffed.</p>
+						<p>Kept track of campus library inventory of books, and standards booklets.</p>
 					</div>
 				</div>
 				
@@ -115,6 +121,7 @@
 						<p>Batch, Windows PowerShell</p>
 						<p>SQL/MySQL</p>
 						<p>HTML5/CSS3/JavaScript, PHP/Perl/Python</p>
+						<p>Beginning to work with Angular</p>
 						<p>Some familiarity with C</p>
 					</div>
 					<div><span class="accent1">Applications and Systems</span></div>
@@ -136,11 +143,12 @@
 				
 				<h2>Volunteer Experience</h2>
 				<div class="block">
-					<div><span class="accent1">Ravens Racing</span><br />Team Media Lead</div>
+					<div><span class="accent1">Ravens Racing</span><br />Team Lead</div>
 					<div><span class="accent2">Sep 2017 &mdash; present</span></div>
 					<div>
-						<p>Designed, built, and deployed, currently maintain team website. Maintain and create content for official team social media sites.</p>
-						<p>Help with hands-on car manufacturing and maintenance.</p>
+						<p>Designed, built, deployed, and currently maintain team website. Maintained official team social media sites.</p>
+						<p>Responsible for organising team events, creating production schedule, and delegating tasks to volunteers.</p>
+						<p>Responsible for volunteer powertrain efforts such as engine rebuilds, swaps, maintenance, etc.</p>
 					</div>
 				</div>
 				<div class="block">
@@ -159,7 +167,8 @@
 					<div><span class="accent2">Sep 2016 &mdash; present (3<sup>rd</sup> year)</span></div>
 					<div>
 						<p>High performance in programming classes.</p>
-						<p>Media Lead for Formula SAE team, Ravens Racing.</p>
+						<p>Team Lead for Formula SAE team, Ravens Racing.</p>
+						<p>Participated in cuHacking 2017 and 2019</p>
 					</div>
 				</div>
 				<div class="block">
@@ -176,6 +185,17 @@
 			<div class="page" id="pr">
 				<p>I've worked on some cool projects before, and I'm always taking on new ones.
 				See below for a list of the projects I'm most proud of.</p>
+				
+				<div class="project">
+					<h2>MoTeC M150 Firmware Adaptation to RR20</h2>
+					<p class="date">Summer 2019 &mdash; present (work in progress)</p>
+					<p>The Ravens Racing cars have used an old MoTeC M48 for years and years now. The ECU is good, but lacks modern functionality.
+					This year, we purchased a MoTeC M150. I have been helping with modifying the firmware to control the radiator fans, as well as
+					the servo motors in the drag reduction system (DRS) wing flaps. I am also working to configure the ECU to accept electronic input
+					to control a pneumatic shifting system.</p>
+					<p>Previously, these systems were all controlled by Arduino boards, which are otherwise unnecessary. Switching to the MoTeC will
+					reduce wiring harness complexity and save weight.</p>
+				</div>
 				
 				<div class="project">
 					<h2>Chipstart</h2>
@@ -213,66 +233,6 @@
 					content generated through PHP. No third-party libraries are used.</p>
 					<p>The site is a work-in-progress, so I'm currently developing a couple new cool features.</p>
 				</div>
-				
-			</div>
-			
-			<!-- CONTACT -->
-			<div class="page" id="co">
-				
-				<h2>Contact Form</h2>
-				
-				<script>
-					if(window.location.hash) {
-						if(window.location.hash.substring(1)=="submitted"){
-							document.write("<div style='border: 2pt solid var(--accent1);background-color: var(--accent3);border-radius: 6pt;padding: 4pt;'>Thanks for taking the time to reach out! I'll get back to you as soon as possible.</div>");
-						}
-					}
-				</script>
-				
-				<form id="contact_form" action="https://www.enformed.io/wsn1mvq8" method="POST">
-				
-					<!-- enformed.io fields -->
-					<script>
-						document.write('<input type="hidden" name="*redirect" value="https://ecanam.me#submitted" />');
-					</script>
-					<input type="hidden" name="*reply" value="email" />
-					<input type="hidden" name="*subject" value="Contact" />
-					
-					<table class="block">
-						<tr>
-							<td>
-								<p><label for="name">*Full Name</label></p>
-								<input required type="text" name="name" id="name" />
-								<input type="email" style="display:none;" name="*honeypot" />
-							</td>
-							<td>
-								<p><label for="email">*Email Address</label></p>
-								<input required type="email" name="email" id="email" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<p><label for="company">*Company/Organization</label></p>
-								<input required type="text" name="company" id="company" />
-							</td>
-							<td>
-								<p><label for="phone">Phone Number</label></p>
-								<input type="tel" name="phone" id="phone" />
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<p><label for="message">*Message</label></p>
-								<textarea required style="height:64pt;" name="message" id="message"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" style="text-align:center;">
-								<input type="submit" value="Submit" />
-							</td>
-						</tr>
-					</table>
-				</form>
 				
 			</div>
 			
