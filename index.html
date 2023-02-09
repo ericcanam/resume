@@ -11,63 +11,62 @@
 	</head>
 	<body>
 		<input name="contact" id="ccard" type="checkbox" />
-		<div class="cfloat">
-			<form id="cfloat" onsubmit="sendReCaptcha(event);" action="/" method="POST">
-				<h1>Contact Info</h1>
-				<div id="reCAPTCHA">
-					<script> document.write('\
-					<p>\
-						Thanks for your interest in reaching out! I just need to make sure of something...\
-					</p>\
-					<div class="g-recaptcha" data-sitekey="6LcSWewSAAAAAEJTIJJSSDIfZfMf_0DAlW7-SDKJ"></div>\
-					<p>\
-						If you\'re curious about what\'s happening here, my email and phone number aren\'t sent with the initial response.\
-						An API verifies your reCAPTCHA score and <i>then</i> updates the page with my information.\
-					</p>\
-					<label for="ccard"><div class="button secondary">Cancel</div></label><!--\
-					--><input type="submit" value="Submit">');
-					</script>
-				</div>
-				<noscript>
-					<p>
-						Thanks for your interest in reaching out! To cut down on spam, I don't send my email and phone number with
-						the initial request. To see those, I ask visitors to complete a reCAPTCHA.
-					</p>
-					<p>
-						Unfortunately, those require JavaScript to be enabled.
-					</p>
-				</noscript>
-				<div id="contact-card">
-					<table>
-						<tr>
-							<td style="text-align: center;padding-right: 18pt;" rowspan="4">
-								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="cursor: default;
-								shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 100 100">
-								<g>
-									<circle style="fill: var(--accent1);" cx="50" cy="50" r="50"></circle>
-									<text x="50%" y="50%" text-anchor="middle" dy=".35em" style="fill:var(--tcol);font-size: 32pt;">EC</text>
-								</g>
-								</svg>
-							</td>
-							<td colspan="2"><h2 style="margin: 0pt;">Eric Canam</h2></td>
-						</tr>
-						<tr><td colspan="2"><p>Software Developer <span class="accent2">&mdash; Ottawa, ON</span></p></td></tr>
-						<tr>
-							<td><img src="./img/phone.png"></td><td><span id="phone"></span></td>
-						</tr>
-						<tr>
-							<td><img src="./img/mail.png"></td><td><span id="email"></span></td>
-						</tr>
-					</table>
-					<label for="ccard"><div class="button secondary">Back to page</div></label>
-				</div>
-				<div id="captcha-error">
-					<h3 class="error">reCAPTCHA Error</h3>
-					<p>Sorry about that! Refresh the page and try again.</p>
-					<label for="ccard"><div class="button secondary">Back to page</div></label>
-				</div>
-			</form>
-		</div>
+		<div class="cfloat"></div>
+		<form id="cfloat" onsubmit="sendReCaptcha(event);" action="/" method="POST">
+			<h1>Contact Info</h1>
+			<div id="reCAPTCHA">
+				<script> document.write('\
+				<p>\
+					Thanks for your interest in reaching out! I just need to make sure of something...\
+				</p>\
+				<div class="g-recaptcha" data-sitekey="6LcSWewSAAAAAEJTIJJSSDIfZfMf_0DAlW7-SDKJ"></div>\
+				<p>\
+					If you\'re curious about what\'s happening here, my email and phone number aren\'t sent with the initial response.\
+					An API verifies your reCAPTCHA score and <i>then</i> updates the page with my information.\
+				</p>\
+				<label for="ccard"><div class="button secondary">Cancel</div></label><!--\
+				--><input type="submit" value="Submit">');
+				</script>
+			</div>
+			<noscript>
+				<p>
+					Thanks for your interest in reaching out! To cut down on spam, I don't send my email and phone number with
+					the initial request. To see those, I ask visitors to complete a reCAPTCHA.
+				</p>
+				<p>
+					Unfortunately, those require JavaScript to be enabled.
+				</p>
+			</noscript>
+			<div id="contact-card">
+				<table>
+					<tr>
+						<td style="text-align: center;padding-right: 18pt;" rowspan="4">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="cursor: default;
+							shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 100 100">
+							<g>
+								<circle style="fill: var(--accent1);" cx="50" cy="50" r="50"></circle>
+								<text x="50%" y="50%" text-anchor="middle" dy=".35em" style="fill:var(--tcol);font-size: 32pt;">EC</text>
+							</g>
+							</svg>
+						</td>
+						<td colspan="2"><h2 style="margin: 0pt;">Eric Canam</h2></td>
+					</tr>
+					<tr><td colspan="2"><p>Software Developer <span class="accent2">&mdash; Ottawa, ON</span></p></td></tr>
+					<tr>
+						<td><img src="./img/phone.png"></td><td><span id="phone"></span></td>
+					</tr>
+					<tr>
+						<td><img src="./img/mail.png"></td><td><span id="email"></span></td>
+					</tr>
+				</table>
+				<label for="ccard"><div class="button secondary">Back to page</div></label>
+			</div>
+			<div id="captcha-error">
+				<h3 class="error">reCAPTCHA Error</h3>
+				<p>Sorry about that! Refresh the page and try again.</p>
+				<label for="ccard"><div class="button secondary">Back to page</div></label>
+			</div>
+		</form>
 
 		<center>
 			<input name="pages" id="intro" checked type="radio" />

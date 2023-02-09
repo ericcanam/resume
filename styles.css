@@ -54,10 +54,6 @@ div.cfloat {
 	height: 100vh;
 	z-index: 3;
 	background-color: rgba(0,0,0,0.7);
-	padding-top: 15vh;
-}
-div#rcjsp{
-	display: none;
 }
 
 div.cfloat table{
@@ -76,11 +72,14 @@ div.cfloat table tr td:nth-child(1){
 form#cfloat {
 	background-color: var(--bgcol);
 	display: block;
-	margin: auto;
 	width: 15cm;
 	text-align: center;
 	padding: 20pt;
 	border-radius: 20pt;
+	z-index: 4;
+	top: 20pt;
+	position: absolute;
+	left: calc(50vw - 7.5cm - 20pt);
 }
 div.g-recaptcha {
 	display: inline-block;
@@ -241,7 +240,9 @@ input#projects:checked ~ div.nav-wrapper div.nav label[for="projects"] div {bord
 input#contact:checked ~ div.nav-wrapper div.nav label[for="contact"] div {border-bottom: 3pt solid var(--accent1);}
 
 input#ccard:not(:checked) ~ div.cfloat{display: none;}
+input#ccard:not(:checked) ~ form#cfloat{display: none;}
 input#ccard:checked ~ div.cfloat{animation: fade-in 0.5s 1; display: block;}
+input#ccard:checked ~ form#cfloat{animation: fade-in 0.5s 1; display: block;}
 
 div.page{
 	animation-name: fade-in;
@@ -306,8 +307,8 @@ div.menu-filler {
 
 @media screen and (max-width: 18cm) {
 	form#cfloat {
-		margin: auto;
 		width: calc(85vw - 40pt);
+		left: 7.5vw;
 	}
 
 	div#contact-card table tr {
