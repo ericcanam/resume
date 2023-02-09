@@ -6,25 +6,73 @@
 		<link type="text/css" rel="stylesheet" href="./styles.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86" />
 		
-		<script>
-			function initialize(){
-				// document.getElementById("intro").checked = true;
-				document.getElementById("contact_form").reset(); 
-				
-				if(window.location.hash) {
-					if(window.location.hash.substring(1)=="submitted"){
-						document.getElementById("contact").checked = true;
-					}
-				}
-			}
-			
-		</script>
-		
+		<script src="./scripts.js" type="text/javascript"></script>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	</head>
-	<body onload="initialize();">
+	<body>
+		<input name="contact" id="ccard" type="checkbox" />
+		<div class="cfloat">
+			<form id="cfloat" onsubmit="sendReCaptcha(event);" action="/" method="POST">
+				<h1>Contact Info</h1>
+				<div id="reCAPTCHA">
+					<script> document.write('\
+					<p>\
+						Thanks for your interest in reaching out! I just need to make sure of something...\
+					</p>\
+					<div class="g-recaptcha" data-sitekey="6LcSWewSAAAAAEJTIJJSSDIfZfMf_0DAlW7-SDKJ"></div>\
+					<p>\
+						If you\'re curious about what\'s happening here, my email and phone number aren\'t sent with the initial response.\
+						An API verifies your reCAPTCHA score and <i>then</i> updates the page with my information.\
+					</p>\
+					<label for="ccard"><div class="button secondary">Cancel</div></label><!--\
+					--><input type="submit" value="Submit">');
+					</script>
+				</div>
+				<noscript>
+					<p>
+						Thanks for your interest in reaching out! To cut down on spam, I don't send my email and phone number with
+						the initial request. To see those, I ask visitors to complete a reCAPTCHA.
+					</p>
+					<p>
+						Unfortunately, those require JavaScript to be enabled.
+					</p>
+				</noscript>
+				<div id="contact-card">
+					<table>
+						<tr><td style="text-align: center;padding-right: 18pt;" rowspan="4">
+							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="width: 96pt;cursor: default;
+							shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 100 100">
+
+								<g id="UrTavla">
+									<circle style="fill: var(--accent1);" cx="50" cy="50" r="50"></circle>
+									<text x="50%" y="50%" text-anchor="middle" dy=".35em" style="fill:var(--tcol);font-size: 32pt;">EC</text>
+								</g>
+								</svg>
+								
+						</td>
+							<td colspan="2"><h2 style="margin: 0pt;">Eric Canam</h2></td></tr>
+						<tr><td colspan="2"><p>Software Developer <span class="accent2">&mdash; Ottawa, ON</span></p></td></tr>
+						<tr>
+							<td><img src="./img/phone.png"></td><td><span id="phone"></span></td>
+						</tr>
+						<tr>
+							<td><img src="./img/mail.png"></td><td><span id="email"></span></td>
+						</tr>
+					</table>
+					<label for="ccard"><div class="button secondary">Back to page</div></label>
+				</div>
+				<div id="captcha-error">
+					<h3 class="error">reCAPTCHA Error</h3>
+					<p>Sorry about that! Refresh the page and try again.</p>
+					<label for="ccard"><div class="button secondary">Back to page</div></label>
+				</div>
+			</form>
+		</div>
+
 		<center>
 			<input name="pages" id="intro" checked type="radio" />
 			<input name="pages" id="resume" type="radio" />
+			<input name="pages" id="skills" type="radio" />
 			<input name="pages" id="projects" type="radio" />
 			<input name="pages" id="contact" type="radio" />
 			
@@ -37,13 +85,13 @@
 						<td>
 							<h1>Eric Canam</h1>
 							<span id="description">
-								Software Developer <span class="accent2">at</span> National Defence
-								<br />Software Engineering student <span class="accent2">at</span> Carleton University
+								Software Engineering student (B.Eng.) <span class="accent2">at</span> Carleton University
 							</span>
 							<div class="media-array">
 								<a target="_blank" href="https://www.linkedin.com/in/ericcanam/"><img src="./img/In-White-128px-R.png" /></a><!--
-								--><a target="_blank" href="https://github.com/ericcanam"><img src="./img/GitHub-Mark-Light-120px-plus.png" /></a><!--
-								--><a target="_blank" href="./Eric Canam.pdf"><img src="./img/PDF_32.png" /></a>
+								--><a target="_blank" href="./Eric Canam.pdf"><img src="./img/PDF_32.png" /></a><label for="ccard"><div class="button">
+									<img src="./img/mail.png" /><img src="./img/phone.png" />
+								</div></label>
 							</div>
 						</td>
 					</tr>
@@ -52,11 +100,11 @@
 			
 			<div class="nav-wrapper">
 				<div class="menu-scroll-fade"></div>
-				<div class="menu-scroll-fade"></div>
 				<div class="nav">
 					<div class="menu-filler"></div><!--
 					--><label for="intro" class="menu"><div id="inb">INTRO</div></label></label><!--
 					--><label for="resume" class="menu"><div id="reb">R&#201;SUM&#201;</div></label><!--
+					--<label for="skills" class="menu"><div id="skb">SKILLS</div></label>!--
 					--><label for="projects" class="menu"><div id="prb">PROJECTS</div></label><!--
 					--><div class="menu-filler"></div>
 				</div>
@@ -67,20 +115,15 @@
 			<div class="page" id="in">
 				<h2>About Me</h2>
 				<p>
-					I am a Software Engineering student, in my third year of studies at Carleton University.
+					I'm a Software Engineering student, in my final year of studies at Carleton University.
 				</p>
 				<p>
-					I love learning, and take pride in building and fixing things.
-					I enjoy solving problems, however they come to me. Whether it's splitting costs with a spreadsheet,
-					fixing cars, or writing code, solving problems captivates me, and I believe it is ultimately my fort&#233;.
+					I'm looking for a full-time job in the software development space starting around the summer of 2023 once my degree is done.
+					I believe my passion for building things and attention to detail would make me a valuable asset to any team.
 				</p>
 				<p>
-					Check out my <label for="resume" class="a">r&#233;sum&#233;</label> and
-					<label for="projects" class="a">projects</label> to see how I've used my love of problem-solving in the real world.
-				</p>
-				<p>
-					To contact me, send me a message on <a target="_blank" href="https://www.linkedin.com/in/ericcanam/">LinkedIn</a>,
-					or download the PDF version of my r&#233;sum&#233;! Included is my email address and phone number.
+					For examples of my previous work experience, see my <label class="a" for="resume">r&#233;sum&#233;</label> section.
+					For a list of some of my personal work I like to highlight, see my <label class="a" for="projects">projects</label> page.
 				</p>
 			</div>
 			
@@ -89,152 +132,91 @@
 				<p>Want a PDF copy of my r&#233;sum&#233;? You can <a target="_blank" href="./Eric Canam.pdf">download it</a> here!</p>
 				
 				<h2>Work Experience</h2>
+				
 				<div class="block">
-					<div><span class="accent1">National Defence</span><br />Software Developer</div>
-					<div><span class="accent2">May 2017 &mdash; present</span></div>
+					<img src="./img/cbsa1.png" class="thumb" />
+					<div><span class="accent1 title">Canada Border Services Agency</span><br />Software Developer<br />
+					<span class="accent2">February 2021 &mdash; August 2021,<br />May 2022 &mdash; August 2022</span></div>
 					<div>
-						<p>Reverse-engineered an old, unsupported Windows application in Java. Wrote technical documentation to support future development, and user documentation to facilitate adoption and use.</p>
-						<p>Wrote technical documentation to support future development of my Java application, as well as user documentation to facilitate deployment and adoption.</p>
+						<p>Created AWS CloudWatch metrics and dashboards to monitor function and health of API Gateway and Lambda resources.</p>
+						<p>Developed custom AWS CloudWatch metrics to offer additional insight into reported errors, including problem resource, error relation,
+							etc. using pre-existing logs.</p>
+						<p>Wrote and tested API endpoints in TypeScript for a new internal Node.JS web application.</p>
+						
+					</div>
+				</div>
+				
+				<div class="block">
+					<img src="./img/dnd1.png" class="thumb" />
+					<div><span class="accent1 title">National Defence</span><br />Software Developer<br />
+					<span class="accent2">May 2017 &mdash; December 2020</span></div>
+					<div>
+						<p>Reverse-engineered an old, unsupported Windows application in Java. Wrote technical documentation to support future development,
+							and user documentation to facilitate adoption and use.</p>
 						<p>Wrote PowerShell scripts to help manage internal network of servers.</p>
 						<p>Tested Microsoft Azure cloud environments and verified that procedures related to their development were complete and correct.</p>
-						<p>Modernizing a terminal interface for an IBM mainframe application by porting it to a new Angular web app.</p>
+						<p>Helped modernize a terminal interface for an IBM mainframe application by porting it to a new Angular web app.</p>
 					</div>
 				</div>
+				
 				<div class="block">
-					<div><span class="accent1">Ericsson Canada</span><br />Software Developer</div>
-					<div><span class="accent2">Sep 2014 &mdash; Jan 2015 (high school co-op)<br />
-					Jul 2015 &mdash; Sep 2015</span></div>
+					<img src="./img/ericsson1.png" class="thumb" />
+					<div><span class="accent1 title">Ericsson</span><br />Software Developer<br />
+					<span class="accent2">September 2014 &mdash; January 2015<br />July 2015 &mdash; September 2015</span></div>
 					<div>
-						<p>Managed production Windows servers and their hosted applications.</p>
-						<p>Maintained apps written in Java, C#, and web-based programs written in Python, ColdFusion, Perl and PHP, running on IIS and Apache. These were run on variety of physical servers and VMs (Windows and Linux).</p>
+						<p>Managed production Windows Servers and their applications.</p>
+						<p>Maintained and updated apps written in Java, C#, and web-based programs written in Python, ColdFusion, Perl and PHP, running on IIS and
+							Apache. These were run on variety of physical servers and VMs (Windows and Linux).</p>
 						<p>Developed user-friendly Java-based book checkout tool for use by employees while campus library was unstaffed.</p>
-						<p>Kept track of campus library inventory of books, and standards booklets.</p>
 					</div>
 				</div>
+
+				<h2>Volunteer &amp; Extracurricular</h2>
 				
-				
-				<h2>Skills</h2>
 				<div class="block">
-					<div><span class="accent1">Programming</span></div>
-					<div>
-						<p>Very well-versed in Java</p>
-						<p>Batch, Windows PowerShell</p>
-						<p>SQL/MySQL</p>
-						<p>HTML5/CSS3/JavaScript, PHP/Perl/Python</p>
-						<p>Beginning to work with Angular</p>
-						<p>Some familiarity with C</p>
+					<img src="./img/ravens5.png" class="thumb" />
+					<div><span class="accent1 title">Ravens Racing FSAE</span><br />
+						Team Lead &mdash; <span class="accent2">September 2019 &mdash; September 2020</span><br />
+						Volunteer &mdash; <span class="accent2">September 2017 &mdash; present</span><br />
 					</div>
-					<div><span class="accent1">Applications and Systems</span></div>
 					<div>
-						<p>Experience with Apache Web Server, Windows IIS</p>
-						<p>Familiar with Windows Server 2003, 2008, and 2012</p>
-					</div>
-				</div>
-				<div class="block">
-					<div><span class="accent1">General Skills</span></div>
-					<div>
-						<p>Able to efficiently solve problems with available resources and technologies, and develop creative solutions.</p>
-						<p>Extensive knowledge in use of common productivity solutions, such as Microsoft Word, Excel, and Outlook.</p>
-						<p>A self-starter who can work independently as well as contributing to team environments.</p>
-						<p>Familiar with common version control systems, and project management applications.</p>
-					</div>
-				</div>
-				
-				
-				<h2>Volunteer Experience</h2>
-				<div class="block">
-					<div><span class="accent1">Ravens Racing</span><br />Team Lead</div>
-					<div><span class="accent2">Sep 2017 &mdash; present</span></div>
-					<div>
-						<p>Designed, built, deployed, and currently maintain team website. Maintained official team social media sites.</p>
-						<p>Responsible for organising team events, creating production schedule, and delegating tasks to volunteers.</p>
-						<p>Responsible for volunteer powertrain efforts such as engine rebuilds, swaps, maintenance, etc.</p>
-					</div>
-				</div>
-				<div class="block">
-					<div><span class="accent1">Bytown Ski Club</span><br />Assistant Web Admin</div>
-					<div><span class="accent2">Sep 2014 &mdash; Mar 2015</span></div>
-					<div>
-						<p>Kept website information current, implemented some design changes.</p>
-						<p>Maintained PHP/Perl/Python scripts that interacted with MySQL databases.</p>
-					</div>
-				</div>
-				
-				
-				<h2>Education</h2>
-				<div class="block">
-					<div><span class="accent1">Carleton University</span><br />Software Engineering (B.Eng)</div>
-					<div><span class="accent2">Sep 2016 &mdash; present (3<sup>rd</sup> year)</span></div>
-					<div>
-						<p>High performance in programming classes.</p>
-						<p>Team Lead for Formula SAE team, Ravens Racing.</p>
-						<p>Participated in cuHacking 2017 and 2019</p>
-					</div>
-				</div>
-				<div class="block">
-					<div><span class="accent1">L.D.H.S.S.</span><br />High School Diploma</div>
-					<div><span class="accent2">Sep 2010 &mdash; Jun 2016</span></div>
-					<div>
-						<p>High performance in 10<sup>th</sup> to 12<sup>th</sup> grade computer science classes.</p>
-						<p>Electric guitarist in school musical pit band (12<sup>th</sup> grade).</p>
+						<p>Re-designed team website to be more easily navigable and mobile device-friendly.</p>
+						<p>Started and lead the effort to design and build an inexpensive racing simulator, ergonomically identical to team's FSAE car.</p>
+						<p>Lead the volunteer team effort to design &amp; build the 2020 car.</p>
+						<p>Organized and presented lectures to new volunteers on various manufacturing topics such as machining, metrology &amp; more.</p>
 					</div>
 				</div>
 			</div>
 			
 			<!-- PROJECTS -->
 			<div class="page" id="pr">
-				<p>I've worked on some cool projects before, and I'm always taking on new ones.
-				See below for a list of the projects I'm most proud of.</p>
+				<p>This is a collection of some of my favourite personal projects. This page is just a brief overview. To read more about a speficic project, see code samples,
+					pictures, and more, click "Read more" underneath the project description.
+				</p>
+
+				<!--<noscript><p>Warning! Without JavaScript, code on this page will not have nice colour schemes!</p></noscript>-->
 				
-				<div class="project">
-					<h2>FSAE Driving Simulator</h2>
-					<p class="date">October 2019 &mdash; present (work in progress)</p>
-					<p>Formula SAE regulations require that space frames be rebuilt every year. This means that when a frame is retired, the team must choose what
-					happens to it.</p>
-					<p>This year, I decided that the 2018 frame could be used to make a driving simulator. The goal of the simulator is to accurately represent
-					the driving dynamics of any ravens racing car by taking input to represent certain parameters. This might include spring/damper rates, tire
-					compound, steering points, etc.</p>
-					<p>The simulator should be able to simulate changes to suspension design, aero package design, and drivetrain.</p>
-					<p>I am currently in the planning phase of the project: researching required sensors, and determining the best way to implement an easily
-					parametrized car model that can be imported into an existing racing simulator/game.</p>
+				<h2>Recent Projects</h2>
+
+				<div class="block">
+					<img src="./img/mc1.png" class="thumb" />
+					<div><span class="accent1 title">AWS Minecraft Server</span><br />
+						<span class="accent2">December 2021</span></div>
+					<div>
+						<p>A Minecraft server hosted on a Linux EC2 instance, a cloud computing service offered by AWS. Multiple other AWS components work together
+							to start and stop the server on command, saving money and offering more flexibility than off-the-shelf solutions.
+						</p>
+						<p>
+							<a href="./projects/aws-mc/index.html">Read more!</a>
+						</p>
+					</div>
 				</div>
 				
-				<div class="project">
-					<h2>Chipstart</h2>
-					<p class="date">Spring 2016</p>
-					<p>Chipstart is a web app meant to help kids learn to write simple code. It used a simulated on-screen microchip that would "control" LEDs or a
-					7-segment display, and "take input" from toggle switches and/or buttons (all simulated on-screen as well). The idea was that by offering a simple
-					visual medium, controlled by a small number of simple commands and elementary math, coding could be made to seem less daunting and easier to learn.</p>
-					<p>In the spring of 2017, I submitted to the TechU.Me AppJam (an app competition for high school students), and won a cash prize as well as a scholarship
-					to the University of Ottawa!</p>
-					<p>The app worked via a JavaScript interpreter (I was not familiar with cloud computing back then) that parsed and executed a syntax of code developed by myself,
-					but very similar in syntax to Python. The language was fully documented such that if read from the beginning, users could learn to write it with no prior
-					programming experience.</p>
-					<p>The app also featured a small number of "challenges" that the user could complete. The users could write and test their code, and when they were ready, they
-					could have it "evaluated". The app would check that the code did what it was supposed to, and then give feedback based on the results of running it.</p>
-					<p>To date, I am probably most proud of this project. Unfortunately, it isn't live at the moment, but I hope to recreate it with more features (and a more
-					elegant solution than an interpreter written in JavaScript). The code can be found <a href="https://github.com/ericcanam/Chipstart">on a repository</a> on my GitHub.</p>
+				<div class="block">
+					<p>
+						More projects to come!
+					</p>
 				</div>
-				
-				<div class="project">
-					<h2>Street Buddy</h2>
-					<p class="date">Work In Progress (present)</p>
-					<p>App that notifies you with text-to-speech if an upcoming road has a user generated report of potholes or otherwise rough road conditions.</p>
-					<p>When finished, I will begin to develop an iOS version.</p>
-				</div>
-				
-				<div class="project">
-					<h2>Ravens Racing Website</h2>
-					<p class="date">Summer 2018 &mdash; present</p>
-					<p>When I joined Ravens Racing FSAE at Carleton in 2017, the team's official website was a large Wix site that was hard to navigate, and hard to work on.
-					I made it my goal to make a site that looked better, was more thoughtfully laid out, and that still contained all useful information.</p>
-					<p>I created the site and launched it (<a target="_blank" href="http://ravensracing.com/">ravensracing.com</a>), and currently update it whenever needed.</p>
-					<p>The site features a fade-scrolling effect on the home page, and is mobile-friendly. It was made so that content updates are dynamically
-					applied across the whole site, and most content is pulled from easy-to-modify JSON files. The whole site is written in HTML/JavaScript/CSS, with some
-					content generated through PHP. No third-party libraries are used.</p>
-					<p>The site is a work-in-progress, so I'm currently developing a couple new cool features.</p>
-				</div>
-				
 			</div>
 			
 		</center>

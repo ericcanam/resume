@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Eric Canam - Online Resume</title>
+		<link type="text/css" rel="stylesheet" href="../../fonts.css" />
+		<link type="text/css" rel="stylesheet" href="../../styles.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86" />
+		
+		<script src="../../formatter.js" type="text/javascript"></script>
+		
+	</head>
+	<body onload="initialize();">
+		<center>
+
+            <div class="page">
+				<noscript><p>Warning! Without JavaScript, code on this page will not have nice colour schemes!</p></noscript>
+				
+                <script>
+                    document.write('<a href="javascript:history.back()"><button>Back to projects</button></a>');
+                </script>
+                <noscript><a href="/"><button>Back to homepage</button></a></noscript>
+
+				<div class="block">
+					<img src="../../img/mc1.png" class="thumb" />
+					<div><span class="accent1 title">AWS Minecraft Server</span><br />
+                        <span class="accent2">December 2021</span> &mdash; Eric Canam
+                    </div>
+					<p>My friends and I wanted a Minecraft server that only we could contribute to, but didn't want to pay the steep price for Mojang's solution,
+						and also wanted control of the server so that modifications, our own backups, and more would be easily configured.
+					</p>
+					<p>The main problem was that none of us had a PC we could guarantee would be turned on. So the solution was a Linux <a href="https://aws.amazon.com/ec2/">EC2</a>
+                        spot instance hosted on AWS. To save money, the machine would turn itself off automatically if no player had connected in over 10 minutes,
+                        and would need one of us to request to turn it on again.
+					</p>
+					<p>
+						To turn it on, we pressed a button on a static webpage hosted on <a href="https://aws.amazon.com/amplify/">Amplify</a>. This then triggered a
+                        <a href="https://aws.amazon.com/lambda/">Lambda</a> function, through <a href="https://aws.amazon.com/api-gateway/">API Gateway</a>:
+					</p>
+					<div class="codeblock">
+						<div class="codetitle">
+							Lambda: EC2-Start
+						</div>
+						<pre class="code" pp-lang="Python">import boto3
+
+region = 'ca-central-1'
+instances = ['your_ec2_instance_id']
+ec2 = boto3.client('ec2', region_name=region)
+
+# brings user to page with server status and its dynamic IP address for this launch
+def rgo(code, ip):
+    response = {}
+    response["statusCode"] = 303
+    response["headers"] = {'Location': "https://your_amplify_url.amplifyapp.com/ip.html?ip="+str(ip)+"&code="+str(code)}
+    response["body"] = "{}"
+    return response
+
+def lambda_handler(event, context):
+    
+    instance = boto3.resource('ec2').Instance(instances[0])
+    st = instance.state["Name"]
+    
+    # starts server if stopped. if another user has started it, show this user its IP address
+    if st=="stopped":
+        ni = ec2.start_instances(InstanceIds=instances)
+        instance.wait_until_running()
+        instance = boto3.resource('ec2').Instance(instances[0])
+    elif st=="pending":
+        instance.wait_until_running()
+        instance = boto3.resource('ec2').Instance(instances[0])
+    if st=="running" or st=="pending" or st=="stopped":
+        public_ip = instance.public_ip_address
+        return rgo("GS", public_ip)
+    
+    return rgo("NA", "null")</pre>
+					</div>
+
+                    <p>This redirected us to another static page that displayed the current IP address of the server (a static IP costs money on AWS!)
+                        From there, we'd have everything we needed to start playing.
+                    </p>
+                    <p>Once we'd had our fun, we would log out and forget about it. The machine had a chron job set up to check if any players were active every 10 minutes.
+                        If it checked twice in a row and no players were online, it would trigger the following Lambda:
+                    </p>
+
+					<div class="codeblock">
+						<div class="codetitle">
+							Lambda: EC2-Stop
+						</div>
+						<pre class="code" pp-lang="Python">import boto3
+import rcon
+
+region = 'ca-central-1'
+instances = ['your_ec2_instance_id']
+ec2 = boto3.client('ec2', region_name=region)
+
+def lambda_handler(event, context):
+	
+    instance = boto3.resource('ec2').Instance(instances[0])
+    
+    # first stop Minecraft server so it saves correctly
+    with rcon.Client(str(instance.public_ip_address), ((((minecraft_port)))), passwd='your_rcon_password') as client:
+        response = client.run('stop')
+    # now shut down EC2 instance
+    ni = ec2.stop_instances(InstanceIds=instances)</pre>
+					</div>
+				</div>
+			</div>
+		</center>
+	</body>
+</html>
