@@ -89,6 +89,9 @@ div#contact-card {
 	display: none;
 	text-align: left;
 }
+div#contact-card svg {
+	width: 96pt;
+}
 div#captcha-error {
 	display: none;
 }
@@ -305,6 +308,13 @@ div.menu-filler {
 	form#cfloat {
 		margin: auto;
 		width: calc(85vw - 40pt);
+	}
+
+	div#contact-card table tr {
+		display: block;
+	}
+	div#contact-card svg {
+		width: 48pt;
 	}
 	
 	table.header td {
