@@ -272,8 +272,11 @@ div.block div.half {
 	display: inline-block;
 	margin-top: 0pt;
 }
-div.block div.half:nth-of-type(odd){
+div.block div.half:nth-of-type(odd):not(:last-of-type){
 	margin-right: 20pt;
+}
+div.block.center{
+	text-align: center;
 }
 
 div.block p{
@@ -322,7 +325,7 @@ p.date {
 }
 
 div.codeblock {
-	width: 87%;
+	width: calc(100% - 20pt);
 	margin: auto;
 	margin-top: 16pt;
 	margin-bottom: 16pt;
