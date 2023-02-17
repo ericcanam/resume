@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Eric Canam - Online Resume</title>
+		<title>AWS Minecraft Server - Eric Canam</title>
 		<link type="text/css" rel="stylesheet" href="../../fonts.css" />
 		<link type="text/css" rel="stylesheet" href="../../styles.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86" />
@@ -16,7 +16,12 @@
 				<noscript><p>Warning! Without JavaScript, code on this page will not have nice colour schemes!</p></noscript>
 				
                 <script>
-                    document.write('<a href="javascript:history.back()"><button>Back to projects</button></a>');
+                    if(document.referrer.toLowerCase()=="https://ecanam.me/"){
+                        document.write('<a href="javascript:history.back()"><button>Back to projects</button></a>');
+                    }else{
+                        document.write('<a href="https://ecanam.me/"><button>See my complete r&#233;sum&#233;</button></a>');
+                    }
+                    
                 </script>
                 <noscript><a href="/"><button>Back to homepage</button></a></noscript>
 

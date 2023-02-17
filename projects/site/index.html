@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Personal Website - Eric Canam</title>
+		<link type="text/css" rel="stylesheet" href="../../fonts.css" />
+		<link type="text/css" rel="stylesheet" href="../../styles.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86" />
+		
+		<script src="../../formatter.js" type="text/javascript"></script>
+		
+	</head>
+	<body onload="initialize();">
+		<center>
+
+            <div class="page">
+				<noscript><p>Warning! Without JavaScript, code on this page will not have nice colour schemes!</p></noscript>
+				
+                <script>
+                    if(document.referrer.toLowerCase()=="https://ecanam.me/"){
+                        document.write('<a href="javascript:history.back()"><button>Back to projects</button></a>');
+                    }else{
+                        document.write('<a href="https://ecanam.me/"><button>See my complete r&#233;sum&#233;</button></a>');
+                    }
+                    
+                </script>
+                <noscript><a href="/"><button>Back to homepage</button></a></noscript>
+
+				<div class="block">
+					<img src="../../img/site1.png" class="thumb" />
+					<div><span class="accent1 title">Personal Website</span><br />
+                        <span class="accent2">Ongoing</span> &mdash; Eric Canam
+                    </div>
+                    <p>
+                        I wanted to create an online resource for potential employers to see a more detailed r&#233;sum&#233; than can fit on one 8.5" &times; 11"
+                        page. It needed to show consistently colour-styled code samples in various languages, present my contact information securely, and appear
+                        visually appealing on both desktop and mobile devices.
+                    </p>
+				</div>
+
+                <h2>Information Security</h2>
+                <div class="block">
+                    <p>The whole site is served over HTTPS, but I also offer visitors the ability to see my email and phone number in case they're inclined to call
+                        and offer me a job interview. (I'm searching!)
+                    </p>
+                    <p>To keep this information from being easily obtained by web scrapers and other types of bots, I don't serve it with the initial web response.
+                        Instead, visitors are asked to complete a <a href="https://www.google.com/recaptcha/about/">reCAPTCHA</a>. The results are verified with a remote
+                        <a href="https://aws.amazon.com/api-gateway/">API Gateway</a>, and if it all looks good then the information is sent in a separate secure response.
+                    </p>
+                    <div class="codeblock">
+                        <div class="codetitle">
+                            Asynchronous function to request &amp; show contact info
+                        </div>
+                        <pre class="code" pp-lang="JavaScript">// tries to validate reCaptcha request
+function sendReCaptcha(e){
+    e.preventDefault(); // don't submit that form
+
+    fetch('https://api_gateway_url.amazonaws.com/verify_captcha', {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify({"grcr": e.target.elements["g-recaptcha-response"].value})
+    }).then(async response => {
+        if(response.ok){
+            let info = await response.json();
+            document.getElementById("phone").innerHTML = info["phone"];
+            document.getElementById("email").innerHTML = info["email"];
+            document.getElementById("reCAPTCHA").style.display = "none";
+            document.getElementById("contact-card").style.display = "block";
+        }else{
+            document.getElementById("reCAPTCHA").style.display = "none";
+            document.getElementById("captcha-error").style.display = "block";
+        }
+    });
+}</pre>
+                    </div>
+                    <p>Once the server has validated that the request is genuine, and associated with a likely-human reCAPTCHA score, it sends the information back in JSON.
+                    </p>
+                </div>
+
+                <h2>Colour-Styled Code Samples</h2>
+                <div class="block">
+                    <p>
+                        Code samples showed on this site are auto-formatted on DOM load with a JavaScript function that takes into account the language of the code.
+                        This makes page responses way smaller and allows me to update the code without worrying about stylizing it for web browsers.
+                    </p>
+                    <div class="codeblock">
+                        <div class="codetitle">
+                            HTML for a code sample
+                        </div>
+                        <pre class="code" pp-lang="HTML"><div class="codeblock">
+    <div class="codetitle">
+        Inception
+    </div>
+    <pre class="code" pp-lang="HTML">...&lt;!-- code sample goes here! --&gt; ...</pre>
+</div>
+</pre>
+                    </div>
+                    <p>
+                        As the page loads, a JavaScript function parses the DOM for these code blocks, and re-writes their contents using a formatting filter based
+                        on rules written for the language specified in the tag attributes. 
+                    </p>
+                    <div class="codeblock">
+                        <div class="codetitle">
+                            JavaScript code sample rules
+                        </div>
+                        <pre class="code" pp-lang="JavaScript">JavaScript: {
+    keywords: [
+        'abstract', 'arguments', ..., 'with', 'yield'
+    ],
+    numvals: ['true', 'false', 'null'],
+    strings: ['"', "'"],
+    comments: ["//"], // more inception?
+    closeComments: [["/*", "*/"]],
+    brackets: ["{", "}", "[", "]", "(", ")"],
+    formatFunc: function(t){
+        return formatCode(t, this);
+    }
+}</pre>
+                    </div>
+                </div>
+
+                <h2>Ultra-Compatible Style</h2>
+                <div class="block">
+                    <p>The site should work 90% as well for the hyper-vigilant with JavaScript disabled as it does for those with JavaScript enabled. The smooth
+                        transitions, seamless pagination and all the element positioning all work purely with CSS.
+                    </p>
+                    <div class="codeblock">
+                        <div class="codetitle">
+                            Smooth CSS transitions and some pagination
+                        </div>
+                        <pre class="code" pp-lang="CSS">@keyframes roll-up{
+    0%      {margin-top: 0pt;}
+    100%    {margin-top: calc(0pt - (48pt + 2in + 4pt + 16pt));}
+}
+
+input#intro:not(:checked) ~ div#in{display: none;}
+input#intro:not(:checked) ~ div.head{
+    animation: roll-up 1s 1;
+    margin-top: calc(0pt - (48pt + 2in + 4pt + 16pt));
+}
+input#resume:not(:checked) ~ div#re{display: none;}
+input#projects:not(:checked) ~ div#pr{display: none;}</pre>
+                    </div>
+                    <p>
+                        Additionally, this website should look just as good on a wide screen as it does on a handheld device. It was designed to show as much detail as possible
+                        on various sizes of screen, while reducing clutter on the smaller ones.
+                    </p>
+                    <div class="codeblock">
+                        <div class="codetitle">
+                            CSS stlye modifications for small screens
+                        </div>
+                        <pre class="code" pp-lang="CSS">@media screen and (max-width: 18cm) {
+    ...
+}</pre>
+                    </div>
+                </div>
+			</div>
+		</center>
+	</body>
+</html>
