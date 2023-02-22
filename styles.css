@@ -33,19 +33,29 @@ body{
 	overflow-y: scroll;
 }
 
-button, input, div.button {
+button, input[type="button"], input[type="submit"], div.button {
 	display: inline-block;
+	background-color: var(--accent1);
+	margin: 16pt;
+	cursor: pointer;
+	text-align: center;
 	padding: 8pt;
+}
+button, input, div.button{
+	font-size: inherit;
 	border-radius: 4pt;
 	color: var(--tcol);
 	border: 0pt solid var(--bgcol);
-	background-color: var(--accent1);
-	margin: 16pt;
-	font-size: inherit;
-	cursor: pointer;
 }
 button.secondary, input.secondary, div.secondary {
 	background-color: var(--accent2);
+}
+input[type="text"]{
+	text-align: left;
+	background-color: var(--bgaccent1);
+	padding: 4pt;
+	margin-top: 2pt;
+	margin-bottom: 2pt;
 }
 
 div.cfloat {
@@ -58,17 +68,24 @@ div.cfloat {
 	background-color: rgba(0,0,0,0.7);
 }
 
-div.cfloat table{
-	margin-bottom: 16pt;
-}
-div.cfloat table td{
-	vertical-align: middle;
-}
-div.cfloat img {
+div#cfloat img {
 	padding-top: 2pt;
 }
-div.cfloat table tr td:nth-child(1){
+div#cfloat table tr td:nth-child(1){
 	padding-right: 12pt;
+}
+
+table.form {
+	margin: auto;
+}
+table.form tr td:first-child{
+	text-align: right;
+}
+table.form tr td:not(:last-child){
+	padding-right: 8pt;
+}
+table.form td {
+	vertical-align: middle;
 }
 
 form#cfloat {
@@ -89,6 +106,9 @@ div.g-recaptcha {
 div#contact-card {
 	display: none;
 	text-align: left;
+}
+div#contact-card table tr td:nth-child(1) {
+	padding-right: 8pt;
 }
 div#contact-card svg {
 	width: 96pt;
@@ -158,23 +178,29 @@ div.profile{
 div.media-array{
 	margin-top: 12pt;
 }
-div.media-array img:not(div.button img), div#contact-card img{
+div.media-array img{
 	height: 28pt;
+	margin-right: 16pt;
+}
+div.media-array div.button img{
+	margin-left: 6pt;
+	margin-right: 6pt;
+}
+div#contact-card img{
+	height: 20pt;
 }
 div.media-array div.button {
-	padding: 4pt;
+	padding: 6pt;
 	margin: 0pt;
 }
 div.media-array a, div.media-array div.button{
-	margin-right: 16pt;
 	vertical-align: middle;
 	display: inline-block;
 }
-div.media-array div.button img {
-	margin: 0pt;
-	margin-left: 6pt;
+div.button img, button img:not(div.media-array img) {
 	margin-right: 6pt;
 	height: 24pt;
+	vertical-align: middle;
 }
 
 .thumb {

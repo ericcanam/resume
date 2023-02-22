@@ -17,15 +17,28 @@
 			<div id="reCAPTCHA">
 				<script> document.write('\
 				<p>\
-					Thanks for your interest in reaching out! I just need to make sure of something...\
+					Thanks for your interest in reaching out!\
 				</p>\
+				<!--<p>\
+					<table class="form"><tr><td>Name</td><td>\
+					<input type="text" name="name" required /></td></tr>\
+					<tr><td>Organization</td><td>\
+					<input type="text" name="company" required /></td></tr></table>\
+				</p>\
+				<p>\
+					Now, one more thing:\
+				</p>-->\
 				<div class="g-recaptcha" data-sitekey="6LcSWewSAAAAAEJTIJJSSDIfZfMf_0DAlW7-SDKJ"></div>\
+				<br /><label for="ccard"><div class="button secondary">Cancel</div></label><!--\
+				--><input type="submit" value="Submit">\
 				<p>\
 					If you\'re curious about what\'s happening here, my email and phone number aren\'t sent with the initial response.\
 					An API verifies your reCAPTCHA score and <i>then</i> updates the page with my information.\
 				</p>\
-				<label for="ccard"><div class="button secondary">Cancel</div></label><!--\
-				--><input type="submit" value="Submit">');
+				<p>\
+					Because my r&#233;sum&#233; also contains my email and phone number, a single-use token is generated and saved.\
+					It may be used to request the PDF file <i>once</i>, for up to 20 minutes after the token is generated.\
+				</p>');
 				</script>
 			</div>
 			<noscript>
@@ -60,7 +73,12 @@
 						<td><img src="./img/mail.png"></td><td><span id="email"></span></td>
 					</tr>
 				</table>
-				<label for="ccard"><div class="button secondary">Back to page</div></label>
+
+				<input type="hidden" id="pdftoken" name="pdftoken" value="" />
+
+				<a href="" id="download_pdf_button" target="_blank" download="Eric Canam.pdf"><div class="button"><img src="./img/PDF_32.png">
+					Download R&#233;sum&#233;</div></a><!--
+				--><label for="ccard"><div class="button secondary">Back to page</div></label>
 			</div>
 			<div id="captcha-error">
 				<h3 class="error">reCAPTCHA Error</h3>
@@ -89,8 +107,8 @@
 							</span>
 							<div class="media-array">
 								<a target="_blank" href="https://www.linkedin.com/in/ericcanam/"><img src="./img/In-White-128px-R.png" /></a><!--
-								--><a target="_blank" href="./Eric Canam.pdf"><img src="./img/PDF_32.png" /></a><label for="ccard"><div class="button">
-									<img src="./img/mail.png" /><img src="./img/phone.png" />
+								--><label for="ccard"><div class="button">
+									<img src="./img/PDF_down.png" /><img src="./img/mail.png" /><img src="./img/phone.png" />
 								</div></label>
 							</div>
 						</td>
@@ -126,11 +144,15 @@
 					<label class="a" for="resume">r&#233;sum&#233;</label> section.
 					For a list of some of my personal work I like to highlight, see my <label class="a" for="projects">projects</label> page.
 				</p>
+				<p>
+					To reach out to me directly, or download a PDF copy of my r&#233;sum&#233;, click <label class="a" for="ccard">here</label> or on the blue button near the top of the page.
+				</p>
 			</div>
 			
 			<!-- RESUME -->
 			<div class="page" id="re">
-				<p>Want a PDF copy of my r&#233;sum&#233;? You can <a target="_blank" href="./Eric Canam.pdf">download it</a> here!</p>
+				<p>Want a PDF copy of my r&#233;sum&#233;? You can download it from my <label class="a" for="intro">intro page</label>
+					by clicking the blue button near the top.</p>
 
 				<h2>Skills &amp; Strengths</h2>
 				<div class="block center">
