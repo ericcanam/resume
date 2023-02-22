@@ -1,12 +1,3 @@
-// standard colours
-var colours = {
-    keywords: "#E0C85E",
-    numvals: "#2DC8E0",
-    strings: "#2CE07D",
-    comments: "#E02C1B",
-    brackets: "#E08326"
-}
-
 function isPartVar(pc, fc){
     return (pc>='0' && pc<='9') || (pc>='a' && pc<='z') || (pc>='A' && pc<='Z') || pc=="_" ||
     (fc>='0' && fc<='9') || (fc>='a' && fc<='z') || (fc>='A' && pc<='Z') || fc=="_";
@@ -69,16 +60,16 @@ function formatCode(t, lang){
             }
         }else{
             if(tt>='0' && tt<='9' && !((t.charAt(i-1)>='a' && t.charAt(i-1)<='z') || (t.charAt(i-1)>='A' && t.charAt(i-1)<='Z'))){
-                nstring += "<span style='color:"+colours.numvals+";'>";
+                nstring += "<span class='numvals'>";
                 inNum = true;
             }else if(lang.brackets.includes(tt)){
-                nstring += "<span style='color:"+colours.brackets+";'>";
+                nstring += "<span class='brackets'>";
                 inBrack = true;
             }else{
                 // single-line comments
                 for(co in lang.comments){
                     if(t.substr(i, lang.comments[co].length)==lang.comments[co]){
-                        nstring += "<span style='color:"+colours.comments+";'>" + lang.comments[co];
+                        nstring += "<span class='comments'>" + lang.comments[co];
                         i += lang.comments[co].length - 1;
                         inComment = true;
                         continue ml;
@@ -88,7 +79,7 @@ function formatCode(t, lang){
                 // multi-line comments (must be closed, NOT by newline)
                 for(cc in lang.closeComments){
                     if(t.substr(i, lang.closeComments[cc][0].length)==lang.closeComments[cc][0]){
-                        nstring += "<span style='color:"+colours.comments+";'>" + lang.closeComments[cc][0];
+                        nstring += "<span class='comments'>" + lang.closeComments[cc][0];
                         i += lang.closeComments[cc][0].length - 1;
                         inCloseComment = lang.closeComments[cc][1];
                         continue ml;
@@ -100,7 +91,7 @@ function formatCode(t, lang){
                 // string wrapper
                 for(sc in lang.strings){
                     if(t.substr(i, lang.strings[sc].length)==lang.strings[sc]){
-                        nstring += "<span style='color:"+colours.strings+";'>" + lang.strings[sc];
+                        nstring += "<span class='strings'>" + lang.strings[sc];
                         i += lang.strings[sc].length-1;
                         inString = lang.strings[sc];
                         continue ml;
@@ -113,7 +104,7 @@ function formatCode(t, lang){
                     let fc = t.charAt(i+lang.keywords[kw].length);
                     if(t.substr(i, lang.keywords[kw].length)==lang.keywords[kw] && !isPartVar(pc, fc)){
                         
-                        nstring += "<span style='color:"+colours.keywords+";'>"+lang.keywords[kw]+"</span>";
+                        nstring += "<span class='keywords'>"+lang.keywords[kw]+"</span>";
                         i += lang.keywords[kw].length - 1;
                         continue ml;
                     }
@@ -123,7 +114,7 @@ function formatCode(t, lang){
                     let fc = t.charAt(i+lang.numvals[nv].length);
                     if(t.substr(i, lang.numvals[nv].length)==lang.numvals[nv] && !isPartVar(pc, fc)){
                         
-                        nstring += "<span style='color:"+colours.numvals+";'>"+lang.numvals[nv]+"</span>";
+                        nstring += "<span class='numvals'>"+lang.numvals[nv]+"</span>";
                         i += lang.numvals[nv].length - 1;
                         continue ml;
                     }
